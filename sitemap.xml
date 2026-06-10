@@ -1,50 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/posts/compare-005.html</loc>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/compare-005.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/posts/guide-003.html</loc>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/guide-003.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/posts/guide-004.html</loc>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/guide-004.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/posts/review-001.html</loc>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/interview-002-69un4f.html</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/review-001.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/posts/review-002.html</loc>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/review-002.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/posts/t3link-006.html</loc>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/t3link-006.html</loc>
     <lastmod>2026-05-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://shimonoseki-fugu.pages.dev/feed.xml</loc>
-    <lastmod>2026-05-29</lastmod>
+    <loc>https://tidalhss-star.github.io/bp-shimonoseki-fugu/feed.xml</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
