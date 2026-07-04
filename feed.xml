@@ -2,59 +2,59 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title><![CDATA[복어요리]]></title>
-  <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu</link>
+  <link>https://busan-food-local.pbn-builder.xyz</link>
   <description><![CDATA[복어요리 - 부산 해운대 복어 맛집 추천 관련 최신 소식 및 가이드]]></description>
   <language>ko</language>
   <pubDate>Wed, 10 Jun 2026 20:15:05 GMT</pubDate>
   <lastBuildDate>Wed, 10 Jun 2026 20:15:05 GMT</lastBuildDate>
-  <atom:link href="https://tidalhss-star.github.io/bp-shimonoseki-fugu/feed.xml" rel="self" type="application/rss+xml" />
+  <atom:link href="https://busan-food-local.pbn-builder.xyz/feed.xml" rel="self" type="application/rss+xml" />
   
     <item>
       <title><![CDATA[해운대 복어 전쟁: 진짜 고수 vs SNS 유명맛집, 내가 직접 부딪혀본 썰]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/compare-005.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/compare-005.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/compare-005.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/compare-005.html</guid>
       <description><![CDATA[## 발단: PR 머지 직전, 복어집에서 터진 버그 난 2024년 7월, 로컬에서 Llama 3.1 8B를 돌리다가 RoPE theta 값을 50만에서 5000만으로 올리는 실험을 하고 있었음. 원래 논문대로면 long context에서 perplexity가 떨어져야 ]]></description>
       <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[내가 일본 내수용 모니터를 수리하다가 복어 맛집 원리를 깨달은 썰]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/guide-003.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/guide-003.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/guide-003.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/guide-003.html</guid>
       <description><![CDATA[아, 또 시작이군. 당신 같은 일반인들은 모니터가 새 제품이면 무조건 완벽할 거라고 생각하지? 한심해. 진짜 하드웨어 마니아라면 알겠지만, IPS 패널의 백라이트 블리드(Backlight Bleed)는 로트 번호(Lot Number)에 따라 패턴이 완전히 달라져. 특히]]></description>
       <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[벤치마크 점수는 거짓말이다: Q4_K_M 양자화의 숨겨진 결함과 해운대 복어처럼 예리한 인사이트]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/guide-004.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/guide-004.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/guide-004.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/guide-004.html</guid>
       <description><![CDATA[[제목: 벤치마크 점수는 거짓말이다: Q4_K_M 양자화의 숨겨진 결함과 해운대 복어처럼 예리한 인사이트] 대중들이 흔들리는 MMLU 점수나 Humanity's Last Exam 결과에 열광하는 꼴을 보고 있으면 한심할 따름입니다. 그들이 보지 못하는 것은 Q4_K_M]]></description>
       <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[부산 해운대 복어 맛집 추천 경험자에게 물어본 현실적인 판단 기준]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/interview-002-69un4f.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/interview-002-69un4f.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/interview-002-69un4f.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/interview-002-69un4f.html</guid>
       <description><![CDATA[### 제목: 창작한 제목"QN 어itic artifact의 미묘한 오류: 부산 해운대 복어 맛집 추천과 연관된 갈등" #### 포스트 메타정보포스트 기획 테마: 부산 해운대 복어 맛집 추천 경험자에게 물어본 현실적인 판단 기준 백링크 지시: 본문 내러티브 속에서 다음]]></description>
       <pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[아파치 슈퍼셋 2.0 RC3의 침묵된 죽음과 해운대 복어 맛집의 유사성]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/review-001.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/review-001.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/review-001.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/review-001.html</guid>
       <description><![CDATA[아, 또 시작이군. 니들이 아는 Superset 2.0 릴리스는 깔끔한 성공 스토리지? 실상은 달라. PyPI에서 RC3 빌드가 조용히 증발한 사건, 그 진짜 배후를 아는 사람은 손에 꼽아. 표면적인 이유는 "빌드 실패"였다. 하지만 메일링 리스트의 삭제된 스레드를 까]]></description>
       <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[해운대 복어집이라고 다 같은 복어가 아니다: CPU 크레딧 소진급 순삭을 경험한 이의 등급표]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/review-002.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/review-002.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/review-002.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/review-002.html</guid>
       <description><![CDATA[당신들은 모른다. 진정한 인프라 장애라는 게 어떤 맛인지. 새벽 3시 17분, PagerDuty가 울렸다. eu-west-2의 Lightsail 인스턴스가 응답을 멈췄다는 알림이었다. 보통 같으면 "또 네트워크 블립이겠지" 하고 넘겼을 텐데, 이번엔 달랐다. 인스턴스 ]]></description>
       <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
     </item>
     <item>
       <title><![CDATA[3개월 만에 발견한 Q4_K_M의 숨은 배신, 그리고 Neovim이 나를 구원한 이야기]]></title>
-      <link>https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/t3link-006.html</link>
-      <guid isPermaLink="true">https://tidalhss-star.github.io/bp-shimonoseki-fugu/posts/t3link-006.html</guid>
+      <link>https://busan-food-local.pbn-builder.xyz/posts/t3link-006.html</link>
+      <guid isPermaLink="true">https://busan-food-local.pbn-builder.xyz/posts/t3link-006.html</guid>
       <description><![CDATA[## 프로덕션의 조용한 살인자 솔직히 말해서, 그 버그를 처음 마주했을 때 나는 양자화의 Q자도 의심하지 않았다. 누가 그렇겠나? 모델 서빙 파이프라인을 vLLM 0.3.1에서 0.4.2로 올리고, `Mistral-7B-Instruct-v0.2`의 Q4_K_M 체크포인]]></description>
       <pubDate>Fri, 29 May 2026 00:00:00 GMT</pubDate>
     </item>
