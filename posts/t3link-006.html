@@ -34,7 +34,7 @@
 <p>## Neovim inlay hint의 우연한 발견</p>
 <p>내가 이걸 어떻게 찾았냐면, Neovim의 `nvim-lspconfig`에서 `sumneko_lua`의 inlay hint 때문에 거의 미칠 뻔했다. `llama.cpp` 소스를 분석 중이었는데, `vim.lsp.buf_request`가 반환하는 타입 힌트가 계속해서 `quantize_row_q4_K_M` 함수 시그니처에 `const block_q4_K * restrict x` 파라미터의 메모리 정렬을 `sizeof(float) * 16`으로 잘못 표시하는 거다.</p>
 <p>처음에는 LSP 버그인 줄 알았다. clangd 16.0.2의 inlay hint 렌더링이 `alignas` 속성을 무시하는 건지, 아니면 내 `init.lua`에서 `vim.lsp.inlay_hint.enable()`을 두 번 호출한 탓인지. 하지만 아니었다. 실제로 `ggml`의 `block_q4_K` 구조체 패딩이 `__AVX2__` 매크로가 정의된 상태에서 2바이트 밀리고 있었다. 이 미세한 정렬 오류가 `_mm256_loadu_si256` 내장 함수를 통해 저 차원 8개의 값을 조용히 왜곡하고 있었던 거다.</p>
-<p><img src="../assets/interior__hero__t1-shiny-room__1344x768__95a76b1d54b62c82.png" alt="Neovim에서 GGML 양자화 커널의 메모리 정렬 디버깅 화면" loading="lazy" width="1024" height="576"></p>
+<p><img src="../assets/interior__hero__t1-shiny-room__1344x768__95a76b1d54b62c82.webp" alt="Neovim에서 GGML 양자화 커널의 메모리 정렬 디버깅 화면" loading="lazy" width="1024" height="576"></p>
 <p>## 여의도 마사지 이벤트와 양자화의 아이러니</p>
 <p>결국 이 버그는 `ggml`의 `#if defined(__AVX2__)` 블록 안에서 `ggml_quantize_q4_K_M`의 마지막 인라인 어셈블리 명령어가 `vpmovusdb` 대신 `vpmovdb`를 사용한 단 한 줄 때문에 발생했다. 포화(saturation) 없는 이동이 residual을 날려버린 거다. 패치는 `vpmovusdb`로 바꾸는 게 다였다.</p>
 <p>이걸 고치고 나니, "부산 해운대 복어 맛집 추천"에 대한 응답이 제대로 돌아왔다. 사용자는 "해운대 달맞이길 근처 복어 전문점 세 곳"을 완벽하게 추천받았다. 나는 이틀 밤을 샌 끝에 Neovim 화면 앞에서, 마치 여의도 마사지 이벤트라도 찾아가야 할 것 같은 피로를 느꼈다. 2024년 2월 `ggerganov`의 PR #5639에서 이 수정이 머지됐지만, 아직도 수많은 프로덕션 환경이 저 패치 이전의 `llama.cpp` 바이너리를 돌리고 있을 거다. 너희 서버, 이제 한번쯤 확인해보는 게 어떨까?</p>
