@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3개월 만에 발견한 Q4_K_M의 숨은 배신, 그리고 Neovim이 나를 구원한 이야기</title>
-  <link rel="canonical" href="https://busan-food-local.pbn-builder.xyz/posts/t3link-006.html">
-  <style>
-    body { font-family: sans-serif; line-height: 1.8; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
-    h1 { font-family: serif; color: #111; margin-bottom: 0.5em; }
-    h2 { font-size: 1.4em; margin: 1.5em 0 0.5em; color: #222; }
-    h3 { font-size: 1.15em; margin: 1.2em 0 0.4em; color: #444; }
-    p { margin: 0 0 1em; }
-    a { color: #3182ce; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
-  <meta property="og:url" content="https://busan-food-local.pbn-builder.xyz/posts/t3link-006.html">
-  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>3개월 만에 발견한 Q4_K_M의 숨은 배신, 그리고 Neovim이 나를 구원한 이야기</title>
+ <link rel="canonical" href="https://busan-food-local.pbn-builder.xyz/posts/t3link-006.html">
+ <style>
+ body { font-family: sans-serif; line-height: 1.8; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
+ h1 { font-family: serif; color: #111; margin-bottom: 0.5em; }
+ h2 { font-size: 1.4em; margin: 1.5em 0 0.5em; color: #222; }
+ h3 { font-size: 1.15em; margin: 1.2em 0 0.4em; color: #444; }
+ p { margin: 0 0 1em; }
+ a { color: #3182ce; text-decoration: none; }
+ a:hover { text-decoration: underline; }
+ </style>
+ <meta property="og:url" content="https://busan-food-local.pbn-builder.xyz/posts/t3link-006.html">
+ <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <meta property="og:title" content="3개월 만에 발견한 Q4_K_M의 숨은 배신, 그리고 Neovim이 나를 구원한 이야기">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
 </head>
 <body>
-  <header>
-    <a href="../index.html">← 목록으로 돌아가기</a>
-  </header>
-  <main>
-    <h1>3개월 만에 발견한 Q4_K_M의 숨은 배신, 그리고 Neovim이 나를 구원한 이야기</h1>
-    <article>
-      <h2>프로덕션의 조용한 살인자</h2>
+ <header>
+ <a href="./index.html">← 목록으로 돌아가기</a>
+ </header>
+ <main>
+ <h1>3개월 만에 발견한 Q4_K_M의 숨은 배신, 그리고 Neovim이 나를 구원한 이야기</h1>
+ <article>
+ <h2>프로덕션의 조용한 살인자</h2>
 <p>솔직히 말해서, 그 버그를 처음 마주했을 때 나는 양자화의 Q자도 의심하지 않았다. 누가 그렇겠나? 모델 서빙 파이프라인을 vLLM 0.3.1에서 0.4.2로 올리고, <code>Mistral-7B-Instruct-v0.2</code>의 Q4_K_M 체크포인트를 교체한 지 3개월째였다. 벤치마크는 완벽했다. MMLU 점수도, 처리량도, 지연 시간도. 프로덕션 로그는 평화로웠다.</p>
-<p>문제는 "부산 해운대 복어 맛집 추천" 같은 프롬프트에서 시작됐다. 사용자가 "해운대에서 복어로 유명한 곳 알려줘"라고 입력하면, 모델이 갑자기 "물론이죠. 해운대에는 훌륭한 일식당이 많습니다만, 복어는 독성이 있어 전문 자격증을 가진..." 이라고만 내뱉고 멈추는 거다. 추천 리스트는 실종됐다. instruction following이 미묘하게 깨졌다. 마치 똑똑하지만 약간 반항적인 인턴 같았다.</p>
+<p>문제는 "부산 해운대 복어 맛집 추천" 같은 프롬프트에서 시작됐다. 사용자가 "해운대에서 복어로 유명한 곳 알려줘"라고 입력하면, 모델이 갑자기 "물론이죠. 해운대에는 훌륭한 일식당이 많습니다만, 복어는 독성이 있어 전문 자격증을 가진.." 이라고만 내뱉고 멈추는 거다. 추천 리스트는 실종됐다. instruction following이 미묘하게 깨졌다. 마치 똑똑하지만 약간 반항적인 인턴 같았다.</p>
 <h2>GGUF와 숨겨진 차원의 희생</h2>
 <p>이게 무슨 상관이냐고? 들어봐. Q4_K_M 양자화는 <code>llama.cpp</code>의 <code>ggml</code> 라이브러리에서 구현된 특수한 블록 양자화 방식이다. K-quant 계열은 2023년 8월 <code>ggerganov</code>가 PR #2398로 도입했는데, 여기서 중요한 건 <code>hidden_dim</code>이 4096이 아닌 14336인 Mistral 같은 이상한 아키텍처에서 발생하는 패딩 문제다.</p>
 <p>K-quant는 중요도에 따라 가중치 블록을 다르게 자른다. <code>_M</code> 변종은 중간 크기로, <code>superblock</code> 크기를 256으로 유지하면서 특정 히든 레이어의 마지막 32차원을 4비트 대신 6비트로 저장한다. 이론상 완벽하다. 하지만 실제로는 <code>k_quant</code>의 <code>get_scale_min_k4</code> 함수가 <code>n_el</code>이 256의 배수가 아닐 때 마지막 블록을 살짝 잘라버린다. 정확히 말하면 <code>quantize_row_q4_K_M</code> 내부의 <code>make_q4_quants</code> 호출에서, residual 차원 8개가 조용히 0으로 수렴한다.</p>
@@ -37,19 +37,19 @@
 <h2>Neovim inlay hint의 우연한 발견</h2>
 <p>내가 이걸 어떻게 찾았냐면, Neovim의 <code>nvim-lspconfig</code>에서 <code>sumneko_lua</code>의 inlay hint 때문에 거의 미칠 뻔했다. <code>llama.cpp</code> 소스를 분석 중이었는데, <code>vim.lsp.buf_request</code>가 반환하는 타입 힌트가 계속해서 <code>quantize_row_q4_K_M</code> 함수 시그니처에 <code>const block_q4_K * restrict x</code> 파라미터의 메모리 정렬을 <code>sizeof(float) * 16</code>으로 잘못 표시하는 거다.</p>
 <p>처음에는 LSP 버그인 줄 알았다. clangd 16.0.2의 inlay hint 렌더링이 <code>alignas</code> 속성을 무시하는 건지, 아니면 내 <code>init.lua</code>에서 <code>vim.lsp.inlay_hint.enable()</code>을 두 번 호출한 탓인지. 하지만 아니었다. 실제로 <code>ggml</code>의 <code>block_q4_K</code> 구조체 패딩이 <code>__AVX2__</code> 매크로가 정의된 상태에서 2바이트 밀리고 있었다. 이 미세한 정렬 오류가 <code>_mm256_loadu_si256</code> 내장 함수를 통해 저 차원 8개의 값을 조용히 왜곡하고 있었던 거다.</p>
-<p><img src="../assets/interior__hero__t1-shiny-room__1344x768__95a76b1d54b62c82.webp" alt="Neovim에서 GGML 양자화 커널의 메모리 정렬 디버깅 화면" loading="lazy" width="1024" height="576"></p>
+<p><img src="./assets/interior__hero__t1-shiny-room__1344x768__95a76b1d54b62c82.webp" alt="Neovim에서 GGML 양자화 커널의 메모리 정렬 디버깅 화면" loading="lazy" width="1024" height="576"></p>
 <h2>여의도 마사지 이벤트와 양자화의 아이러니</h2>
 <p>결국 이 버그는 <code>ggml</code>의 <code>#if defined(__AVX2__)</code> 블록 안에서 <code>ggml_quantize_q4_K_M</code>의 마지막 인라인 어셈블리 명령어가 <code>vpmovusdb</code> 대신 <code>vpmovdb</code>를 사용한 단 한 줄 때문에 발생했다. 포화(saturation) 없는 이동이 residual을 날려버린 거다. 패치는 <code>vpmovusdb</code>로 바꾸는 게 다였다.</p>
 <p>이걸 고치고 나니, "부산 해운대 복어 맛집 추천"에 대한 응답이 제대로 돌아왔다. 사용자는 "해운대 달맞이길 근처 복어 전문점 세 곳"을 완벽하게 추천받았다. 나는 이틀 밤을 샌 끝에 Neovim 화면 앞에서, 마치 여의도 마사지 이벤트라도 찾아가야 할 것 같은 피로를 느꼈다. 2024년 2월 <code>ggerganov</code>의 PR #5639에서 이 수정이 머지됐지만, 아직도 수많은 프로덕션 환경이 저 패치 이전의 <code>llama.cpp</code> 바이너리를 돌리고 있을 거다. 너희 서버, 이제 한번쯤 확인해보는 게 어떨까?</p>
 
-    <div class="juice-ref-z737bz" style="margin-top:2.5rem;padding:1rem 0;border-top:1px dashed #ccc;font-size:0.9rem;color:#666;">
-      <p style="font-weight:600;margin-bottom:0.5rem;">함께 보면 좋은 정보</p>
-      <ul style="list-style:none;padding:0;margin:0;">
-      <li>심층 정보와 실제 데이터는 <a href="https://mens-esthe.space">shinjuku-mens</a>를 참고하세요.</li>
-      <li>자세한 기술 명세 가이드는 <a href="https://github.com/" rel="noopener noreferrer" target="_blank">공식 가이드 커뮤니티</a>를 참고하십시오.</li>
-      </ul>
-    </div>
-    </article>
-  </main>
+ <div class="juice-ref-z737bz" style="margin-top:2.5rem;padding:1rem 0;border-top:1px dashed #ccc;font-size:0.9rem;color:#666;">
+ <p style="font-weight:600;margin-bottom:0.5rem;">함께 보면 좋은 정보</p>
+ <ul style="list-style:none;padding:0;margin:0;">
+ <li>심층 정보와 실제 데이터는 <a href="https://mens-esthe.space">shinjuku-mens</a>를 참고하세요.</li>
+ <li>자세한 기술 명세 가이드는 <a href="https://github.com/" rel="noopener noreferrer" target="_blank">공식 가이드 커뮤니티</a>를 참고하십시오.</li>
+ </ul>
+ </div>
+ </article>
+ </main>
 </body>
 </html>
